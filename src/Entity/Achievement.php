@@ -9,16 +9,12 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AchievementRepository::class)]
-
 class Achievement
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\ManyToOne(inversedBy: 'achievements')]
-    private ?Quest $quete = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateAccomplissement = null;
@@ -40,18 +36,6 @@ class Achievement
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getQuete(): ?Quest
-    {
-        return $this->quete;
-    }
-
-    public function setQuete(?Quest $quete): static
-    {
-        $this->quete = $quete;
-
-        return $this;
     }
 
     public function getDateAccomplissement(): ?\DateTimeInterface

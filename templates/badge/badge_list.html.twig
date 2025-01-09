@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des badges{% endblock %}
+
+{% block body %}
+    <h1>Liste des badges</h1>
+
+    {% if badges is empty %}
+        <p>Aucun badge disponible.</p>
+    {% else %}
+        <ul>
+            {% for badge in badges %}
+                <li>
+                    <strong>{{ badge.bame }}</strong><br>
+                    Description : {{ badge.description }}<br>
+                    Catégorie : {{ badge.category }}<br>
+                    Utilisateur : {{ badge.user }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

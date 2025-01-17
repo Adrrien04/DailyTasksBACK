@@ -9,7 +9,7 @@
         },
         "files": [
             "./config/packages/api_platform.yaml",
-            "./config/routes/api_platform.yaml",
+            "./config/routes/api_platform.yaml"
         ]
     },
     "doctrine/doctrine-bundle": {
@@ -21,7 +21,7 @@
             "ref": "8d96c0b51591ffc26794d865ba3ee7d193438a83"
         },
         "files": [
-            "./config/packages/doctrine.yaml",
+            "./config/packages/doctrine.yaml"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {

@@ -108,6 +108,7 @@ daily-tasks/
 ## Endpoints de l’API
 
 Voici un aperçu des endpoints exposés par l’API pour interagir avec le système de quêtes.
+Pour accéder au swagger, l'url peut varier au début selon la configuration : http://127.0.0.1:8000/api 
 
 ### Utilisateurs
 
@@ -166,10 +167,4 @@ Si vous souhaitez contribuer au projet, suivez ces étapes :
     ```
 
 5. Ouvrez une Pull Request sur le dépôt principal.
-
-## Licence
-
-Le projet est sous Licence MIT. Vous pouvez l’utiliser, la modifier et la redistribuer selon les termes de cette licence.
-
----
 

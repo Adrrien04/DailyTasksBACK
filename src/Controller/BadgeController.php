@@ -16,25 +16,25 @@ class BadgeController extends AbstractController
         $this->client = $client;
     }
 
-    #[Route('/badges', name: 'app_badge_list')]
+    /**
+     * @Route("/badges", name="badge_list")
+     */
     public function badgeList(): Response
     {
         try {
-            // Récupérer les badges depuis l'API
             $response = $this->client->request('GET', 'http://localhost:8000/api/badges', [
                 'timeout' => 60,
-                'verify_peer' => false, // Désactiver SSL pour localhost
+                'verify_peer' => false,
                 'verify_host' => false,
             ]);
 
             $data = $response->toArray();
 
-            return $this->render('badge_list.html.twig', [
+            return $this->render('home/badge_list.html.twig', [
                 'badges' => $data['member'] ?? [],
             ]);
 
         } catch (\Exception $e) {
-            // Gérer les erreurs et renvoyer une réponse d'erreur
             return new Response('Erreur lors de la récupération des badges : ' . $e->getMessage(), 500);
         }
     }

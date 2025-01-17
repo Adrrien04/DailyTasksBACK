@@ -10,7 +10,6 @@
         "files": [
             "./config/packages/api_platform.yaml",
             "./config/routes/api_platform.yaml",
-            "./src/ApiResource/.gitignore"
         ]
     },
     "doctrine/doctrine-bundle": {
@@ -23,8 +22,6 @@
         },
         "files": [
             "./config/packages/doctrine.yaml",
-            "./src/Entity/.gitignore",
-            "./src/Repository/.gitignore"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -92,7 +89,6 @@
             "./config/routes/framework.yaml",
             "./config/services.yaml",
             "./public/index.php",
-            "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
     },

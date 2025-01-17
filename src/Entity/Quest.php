@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\QuestRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Metadata\ApiResource; // Importer cette classe
 
 #[ORM\Entity(repositoryClass: QuestRepository::class)]
-#[ApiResource] // Ajout de l'annotation ApiResource pour exposer l'entité dans l'API
+#[ApiResource]
 class Quest
 {
     #[ORM\Id]
@@ -21,17 +22,22 @@ class Quest
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?int $difficulte = null;
-
-    #[ORM\Column]
-    private ?bool $reccurente = null;
+    #[ORM\Column(length: 255)]
+    private ?string $difficulty = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $etat = null;
+    private ?string $category = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $lastRealisation = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $createdBy = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $img = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $done = false; // Nouvelle propriété pour le statut de la quête
+
+    // Getters et setters
 
     public function getId(): ?int
     {
@@ -62,50 +68,62 @@ class Quest
         return $this;
     }
 
-    public function getDifficulte(): ?int
+    public function getDifficulty(): ?string
     {
-        return $this->difficulte;
+        return $this->difficulty;
     }
 
-    public function setDifficulte(int $difficulte): static
+    public function setDifficulty(string $difficulty): static
     {
-        $this->difficulte = $difficulte;
+        $this->difficulty = $difficulty;
 
         return $this;
     }
 
-    public function isReccurente(): ?bool
+    public function getCategory(): ?string
     {
-        return $this->reccurente;
+        return $this->category;
     }
 
-    public function setReccurente(bool $reccurente): static
+    public function setCategory(string $category): static
     {
-        $this->reccurente = $reccurente;
+        $this->category = $category;
 
         return $this;
     }
 
-    public function getEtat(): ?string
+    public function getCreatedBy(): ?string
     {
-        return $this->etat;
+        return $this->createdBy;
     }
 
-    public function setEtat(string $etat): static
+    public function setCreatedBy(?string $createdBy): static
     {
-        $this->etat = $etat;
+        $this->createdBy = $createdBy;
 
         return $this;
     }
 
-    public function getLastRealisation(): ?\DateTimeImmutable
+    public function getImg(): ?string
     {
-        return $this->lastRealisation;
+        return $this->img;
     }
 
-    public function setLastRealisation(\DateTimeImmutable $lastRealisation): static
+    public function setImg(?string $img): static
     {
-        $this->lastRealisation = $lastRealisation;
+        $this->img = $img;
+
+        return $this;
+    }
+
+    public function isDone(): bool
+    {
+        return $this->done;
+    }
+
+    public function setDone(bool $done): static
+    {
+        $this->done = $done;
 
         return $this;
     }

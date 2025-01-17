@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AchievementUserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Metadata\ApiResource; // Importer cette classe
+use ApiPlatform\Metadata\ApiResource;
 
 #[ORM\Entity(repositoryClass: AchievementUserRepository::class)]
 #[ApiResource] // Ajout de l'annotation ApiResource pour exposer l'entité dans l'API

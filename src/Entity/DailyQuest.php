@@ -3,39 +3,62 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use Doctrine\DBAL\Types\Types;
+use App\Repository\DailyQuestRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity()]
-#[ApiResource()] // Ajoute cette annotation
+#[ApiResource]
+#[ORM\Entity(repositoryClass: DailyQuestRepository::class)]
 class DailyQuest
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: "integer")]
-    private $id;
+    #[ORM\Column]
+    private ?int $id = null;
 
-    #[ORM\Column(type: "string", length: 100)]
-    private $username;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: "dailyQuests")]
+    private ?User $user = null;
 
-    #[ORM\Column(type: "string", length: 255)]
-    private $quest;
-
-    #[ORM\Column(type: "datetime", nullable: true)]
-    private $completedAt;
+    #[ORM\ManyToOne(targetEntity: Quest::class)]
+    private ?Quest $quest = null;
 
     #[ORM\Column(type: "boolean")]
-    private $completed;
+    private bool $done = false;
 
-    public function getCompleted(): ?bool
+    public function getId(): ?int
     {
-        return $this->completed;
+        return $this->id;
     }
 
-    public function setCompleted(bool $completed): self
+    public function getUser(): ?User
     {
-        $this->completed = $completed;
+        return $this->user;
+    }
 
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    public function getQuest(): ?Quest
+    {
+        return $this->quest;
+    }
+
+    public function setQuest(?Quest $quest): self
+    {
+        $this->quest = $quest;
+        return $this;
+    }
+
+    public function isDone(): bool
+    {
+        return $this->done;
+    }
+
+    public function setDone(bool $done): self
+    {
+        $this->done = $done;
         return $this;
     }
 }

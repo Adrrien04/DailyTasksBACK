@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Entity;
-
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BadgeRepository;
 use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Metadata\ApiResource;
 
 #[ORM\Entity(repositoryClass: BadgeRepository::class)]
 #[ApiResource]
@@ -15,43 +14,28 @@ class Badge
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'badges')]
-    private ?User $user = null;
-
     #[ORM\Column(length: 255)]
-    private ?string $bame = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $category = null;
+    private ?string $icon = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getName(): ?string
     {
-        return $this->user;
+        return $this->name;
     }
 
-    public function setUser(?User $user): static
+    public function setName(string $name): static
     {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getBame(): ?string
-    {
-        return $this->bame;
-    }
-
-    public function setBame(string $bame): static
-    {
-        $this->bame = $bame;
+        $this->name = $name;
 
         return $this;
     }
@@ -68,14 +52,14 @@ class Badge
         return $this;
     }
 
-    public function getCategory(): ?string
+    public function getIcon(): ?string
     {
-        return $this->category;
+        return $this->icon;
     }
 
-    public function setCategory(string $category): static
+    public function setIcon(string $icon): static
     {
-        $this->category = $category;
+        $this->icon = $icon;
 
         return $this;
     }

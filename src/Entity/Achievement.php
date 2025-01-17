@@ -83,7 +83,7 @@ class Achievement
     public function removeAchievementUser(AchievementUser $achievementUser): static
     {
         if ($this->achievementUsers->removeElement($achievementUser)) {
-            // set the owning side to null (unless already changed)
+
             if ($achievementUser->getAchievement() === $this) {
                 $achievementUser->setAchievement(null);
             }

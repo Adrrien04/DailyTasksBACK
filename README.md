@@ -30,11 +30,13 @@ Clonez le dépôt GitHub contenant le projet à l’aide de la commande suivante
 git clone https://github.com/Adrrien04/DailyTasksBACK
 cd DailyTasksBACK
 ```
-Pour lancer le front clonez ce repo :
+Pour lancer le front clonez ce repo, pour suivre l'installation du front suivez le readme disponible sur le repo du front :
 ```bash
 git clone https://github.com/Adrrien04/DailyTasksFRONT
 cd DailyTasksFRONT
 ```
+https://github.com/Adrrien04/DailyTasksFRONT
+
 ### Étape 2 : Installer les dépendances
 
 Installez toutes les dépendances du projet en utilisant Composer :
